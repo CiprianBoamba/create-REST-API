@@ -39,13 +39,21 @@ class BookController extends Controller
     }
 
 
+    /**
+ * Store a newly created book in the database.
+ *
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\JsonResponse
+ */
+
     public function store(Request $request)
     {
             $validator = Validator::make($request->all(),[
                 'title' => 'required|string|max:191',
                 'author' => 'required|string|max:191',
                 'genres' => 'required|string|max:191',
-                'published_year' => 'required|digits:4',
+                'published_year' => 'required|digits:4|before_or_equal:' . now()->year,
             ]);
 
             if($validator->fails()){
