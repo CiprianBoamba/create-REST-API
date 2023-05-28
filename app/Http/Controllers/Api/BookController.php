@@ -117,6 +117,7 @@ class BookController extends Controller
  *
  * @param  int  $id
  * @return \Illuminate\Http\JsonResponse
+ * @throws \Illuminate\Database\Eloquent\ModelNotFoundException If book not found
  */
     
     public function edit($id)
@@ -130,7 +131,7 @@ class BookController extends Controller
         ], Response::HTTP_OK);
         
     } catch (ModelNotFoundException $e) {
-        
+
         return response()->json([
             'status' => Response::HTTP_NOT_FOUND,
             'message' => 'No book was found!'
@@ -198,6 +199,7 @@ class BookController extends Controller
  *
  * @param  int  $id
  * @return \Illuminate\Http\JsonResponse
+  * @throws \Illuminate\Database\Eloquent\ModelNotFoundException If book not found
  */
     public function destroy($id)
     {
