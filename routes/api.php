@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// test route and add message
 
-Route::get('books', function () {
-    return response()->json([
-        'message' => 'test url: api/books',
-        'status_code' => 200
-    ], 200);
-});
+// Define a GET route for the URL /books.
+Route::get('books', BookController::class, 'index');
