@@ -26,3 +26,5 @@ Route::get('books',[BookController::class, 'index'] );
 Route::post('books',[BookController::class, 'store'] );
 // Define a GET route for the URL /books/{id}.
 Route::get('books/{id}',[BookController::class, 'show'] );
+// Define a GET route for the URL /books/{id}/edit.
+Route::get('books/{id}/edit',[BookController::class, 'edit'] );

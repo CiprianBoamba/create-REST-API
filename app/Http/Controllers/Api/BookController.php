@@ -109,6 +109,31 @@ class BookController extends Controller
     }
 
 
+/**
+ * Edit the specified book.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\JsonResponse
+ */
+    
+    public function edit($id)
+    {
+        $book = Book::find($id);
+
+        if($book){
+            return response()->json([
+                'status' => 200,
+                'book' => $book
+            ],200);
+        }else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No book was found!'
+            ], 404);
+        }
+    }
+
+
 
 
 }
