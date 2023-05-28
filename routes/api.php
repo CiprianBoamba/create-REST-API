@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // Define a GET route for the URL /books.
-Route::get('books', BookController::class, 'index');
+Route::get('books',[BookController::class, 'index'] );
