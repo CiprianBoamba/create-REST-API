@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BookController extends Controller
 {
@@ -86,21 +87,25 @@ class BookController extends Controller
  *
  * @param  int  $id
  * @return \Illuminate\Http\JsonResponse
+ * @throws \Illuminate\Database\Eloquent\ModelNotFoundException If book not found
  */
     public function show($id)
     {
-        $book = Book::find($id);
+        
 
-        if($book){
+        try {
+            $book = Book::findOrFail($id);
+
             return response()->json([
-                'status' => 200,
-                'book' => $book
-            ],200);
-        }else {
+                'status' => Response::HTTP_OK,
+                'message' => $book
+            ],Response::HTTP_OK);
+            
+        } catch (ModelNotFoundException $e) {
             return response()->json([
-                'status' => 404,
+                'status' => Response::HTTP_NOT_FOUND,
                 'message' => 'No book was found!'
-            ], 404);
+            ], Response::HTTP_NOT_FOUND);
         }
 
     }
