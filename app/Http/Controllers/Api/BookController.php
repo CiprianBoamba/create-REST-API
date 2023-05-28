@@ -162,6 +162,16 @@ class BookController extends Controller
             $book = Book::find($id);
 
         if($book){
+
+
+            
+            $book->update([
+                'title' => $request->title,
+                'author' => $request->author,
+                'genres' => $request->genres,
+                'published_year' => $request->published_year
+            ]);
+
             return response()->json([
                 'status' => 200,
                 'book' => $book
@@ -175,6 +185,24 @@ class BookController extends Controller
         }
 
 
+    }
+
+    public function destroy($id)
+    {
+        $book = Book::find($id);
+
+        if($book){
+            $book->delete($id);
+            return response()->json([
+                'status' => 200,
+                'message' => 'Book Deleted succesfully'
+            ],200);
+        }else{
+            return response()->json([
+                'status' => 404,
+                'message' => 'No book was found!'
+            ], 404);
+        }
     }
 
 

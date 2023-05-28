@@ -34,3 +34,6 @@ Route::get('books/{id}/edit',[BookController::class, 'edit'] );
 
 // Define a PUT route for the URL /students/{id}/edit.
 Route::put('books/{id}/edit',[BookController::class, 'update'] );
+
+// Define a DELETE route for the URL /students/{id}/edit.
+Route::delete('books/{id}/delete',[BookController::class, 'destroy'] );
