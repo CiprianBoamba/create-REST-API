@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class BookController extends Controller
 {
 
@@ -19,24 +21,19 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-
-
-    if ($books->isEmpty()) {
-        return response()->json([
-            'status' => 200,
-            'message' => 'No books found!',
-            'books' => [],
-        ], 200);
+    
+        $response = [
+            'status' => Response::HTTP_OK,
+            'books' => $books,
+        ];
+    
+        if ($books->isEmpty()) {
+            $response['message'] = 'No books found!';
+        }
+    
+        return response()->json($response, Response::HTTP_OK);
     }
 
-
-    return response()->json([
-        'status' => 200,
-        'books' => $books
-    ], 200);
-
-
-    }
 
 
     /**
