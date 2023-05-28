@@ -12,17 +12,18 @@ class BookController extends Controller
     {
         $books = Book::all();
 
-        if($books->count() > 0){
-            return response()->json([
-                'status' => 200,
-                'books' => $books
-            ],200);
-        }else {
-            return response()->json([
-                'status'=> 404,
-                'message' => 'No record found!'
-            ],404);
-        }
+      
+    if($books->isEmpty()){
+        return response()->json([
+            'status' => 404,
+            'message' => 'No books found!'
+        ], 404);
+    }
+
+    return response()->json([
+        'status' => 200,
+        'books' => $books
+    ], 200);
 
 
     }
