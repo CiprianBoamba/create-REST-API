@@ -5,9 +5,17 @@ namespace App\Http\Controllers\Api;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
+
+
+/**
+ * Display a listing of the resource.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
     public function index()
     {
         $books = Book::all();
@@ -29,5 +37,46 @@ class BookController extends Controller
 
 
     }
+
+
+    public function store(Request $request)
+    {
+            $validator = Validator::make($request->all(),[
+                'title' => 'required|string|max:191',
+                'author' => 'required|string|max:191',
+                'genres' => 'required|string|max:191',
+                'published_year' => 'required|digits:4',
+            ]);
+
+            if($validator->fails()){
+
+                return response()->json([
+                    'status' => 422,
+                    'errors' => $validator->messages()
+                ], 422);
+            } else {
+                $book=Book::create([
+                    'title' => $request->title,
+                    'author' => $request->author,
+                    'genres' => $request->genres,
+                    'published_year' => $request->published_year
+                ]);
+            }
+
+            if($book){
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Created Successfully!'
+                ], 200);
+            }else {
+                return response()->json([
+                    'status' => 500,
+                    'message' => 'Something went wrong!'
+                ], 500);
+            }
+    }
+
+
+
 
 }
