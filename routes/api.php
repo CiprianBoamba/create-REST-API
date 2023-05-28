@@ -18,7 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// test route and add message
 
 Route::get('books', function () {
-    return 'test url: api/books';
+    return response()->json([
+        'message' => 'test url: api/books',
+        'status_code' => 200
+    ], 200);
 });
