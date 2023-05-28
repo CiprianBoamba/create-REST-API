@@ -187,6 +187,13 @@ class BookController extends Controller
 
     }
 
+
+    /**
+ * Delete the specified book from storage.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\JsonResponse
+ */
     public function destroy($id)
     {
         $book = Book::find($id);
