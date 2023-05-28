@@ -6,7 +6,6 @@ use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -57,9 +56,9 @@ class BookController extends Controller
             if($validator->fails()){
 
                 return response()->json([
-                    'status' => 422,
+                    'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
                     'errors' => $validator->messages()
-                ], 422);
+                ], Response::HTTP_UNPROCESSABLE_ENTITY);
             } else {
                 $book=Book::create([
                     'title' => $request->title,
@@ -71,14 +70,14 @@ class BookController extends Controller
 
             if($book){
                 return response()->json([
-                    'status' => 200,
+                    'status' => Response::HTTP_OK,
                     'message' => 'Created Successfully!'
-                ], 200);
+                ], Response::HTTP_OK);
             }else {
                 return response()->json([
-                    'status' => 500,
+                    'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
                     'message' => 'Something went wrong!'
-                ], 500);
+                ], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
     }
 
