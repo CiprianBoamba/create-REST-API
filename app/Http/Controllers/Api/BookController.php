@@ -134,6 +134,50 @@ class BookController extends Controller
     }
 
 
+    /**
+ * Update the specified book in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  int  $id
+ * @return \Illuminate\Http\JsonResponse
+ */
+
+    public function update(Request $request, int $id)
+    {
+        $validator = Validator::make($request->all(),[
+            'title' => 'required|string|max:191',
+            'author' => 'required|string|max:191',
+            'genres' => 'required|string|max:191',
+            'published_year' => 'required|digits:4|before_or_equal:' . now()->year,
+        ]);
+
+        if($validator->fails()){
+
+            return response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        } else {
+
+            $book = Book::find($id);
+
+        if($book){
+            return response()->json([
+                'status' => 200,
+                'book' => $book
+            ],200);
+        }else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No book was found!'
+            ], 404);
+        }
+        }
+
+
+    }
+
+
 
 
 }
