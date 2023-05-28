@@ -100,8 +100,9 @@ class BookController extends Controller
                 'status' => Response::HTTP_OK,
                 'message' => $book
             ],Response::HTTP_OK);
-            
+
         } catch (ModelNotFoundException $e) {
+
             return response()->json([
                 'status' => Response::HTTP_NOT_FOUND,
                 'message' => 'No book was found!'
@@ -120,19 +121,21 @@ class BookController extends Controller
     
     public function edit($id)
     {
-        $book = Book::find($id);
+       try {
+        $book = Book::findOrFail($id);
 
-        if($book){
-            return response()->json([
-                'status' => 200,
-                'book' => $book
-            ],200);
-        }else {
-            return response()->json([
-                'status' => 404,
-                'message' => 'No book was found!'
-            ], 404);
-        }
+        return response()->json([
+            'status' => Response::HTTP_OK,
+            'book' => $book
+        ], Response::HTTP_OK);
+        
+    } catch (ModelNotFoundException $e) {
+        
+        return response()->json([
+            'status' => Response::HTTP_NOT_FOUND,
+            'message' => 'No book was found!'
+        ], Response::HTTP_NOT_FOUND);
+    }
     }
 
 
