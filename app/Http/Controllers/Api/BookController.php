@@ -85,6 +85,25 @@ class BookController extends Controller
     }
 
 
+    public function show($id)
+    {
+        $book = Book::find($id);
+
+        if($book){
+            return response()->json([
+                'status' => 200,
+                'book' => $book
+            ],200);
+        }else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No book was found!'
+            ], 404);
+        }
+
+    }
+
+
 
 
 }
