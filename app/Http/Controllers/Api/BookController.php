@@ -84,7 +84,12 @@ class BookController extends Controller
             }
     }
 
-
+/**
+ * Display the specified book.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\JsonResponse
+ */
     public function show($id)
     {
         $book = Book::find($id);
