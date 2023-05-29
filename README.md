@@ -92,32 +92,6 @@ The request should include the ID of the book in the URL.
 
 Before you start, ensure you have [PHP](https://www.php.net/), [Composer](https://getcomposer.org/), and [MySQL](https://www.mysql.com/) installed and properly configured on your machine.
 
-Follow these steps to install and run the project:
-
-1. **Clone the repository:** Clone this repository to your machine using Git:
-    ```bash
-    git clone https://github.com/CiprianBoamba/create-REST-API
-    ```
-2. **Navigate into the project directory:**
-
-```bash
-cd your-repository-name
-```
-
-3. **Install dependencies:** Use Composer to install the project's dependencies:
-
-```bash
-composer install
-```
-
-4. **Set up your environment variables:** Copy the `.env.example` file and create your own `.env` file:
-
-```bash
-cp .env.example .env
-```
-
-Now, open the `.env` file and configure your database information.
-
 ## Usage Instructions
 
 List any instructions on how to use your project here.
@@ -150,7 +124,7 @@ List any instructions on how to use your project here.
 
 5. **Delete a Book** To delete a book, make a **`DELETE`** request to **`/api/books/{id}`**, where **`{id}`** is the ID of the book you want to delete.
 
-To interact with this API, you can use any HTTP client, such as [curl](https://curl.se/),[Postman](https://www.postman.com/), or any programming language that can send HTTP requests.
+To interact with this API, you can use any HTTP client, such as [Postman](https://www.postman.com/), or any programming language that can send HTTP requests.
 
 Please note that this API does not require any authentication or authorization at the moment, and it should not be used in production without adding proper security measures.
 
