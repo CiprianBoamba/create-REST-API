@@ -94,8 +94,6 @@ Before you start, ensure you have [PHP](https://www.php.net/), [Composer](https:
 
 ## Usage Instructions
 
-List any instructions on how to use your project here.
-
 1. **List All Books:** To get a list of all books, make a **`GET`** request to **`/api/books`** .
 2. **Create a New Book:** To create a new book, make a **`POST`** request to **`/api/books`** with a JSON body containing **'title'**, **'author'**, **'genres'**, and **'published_year'**.
    Example:
