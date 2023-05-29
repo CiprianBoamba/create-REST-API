@@ -90,11 +90,69 @@ The request should include the ID of the book in the URL.
 
 ## Installation Instructions
 
-List any instructions on how to install your project here.
+Before you start, ensure you have [PHP](https://www.php.net/), [Composer](https://getcomposer.org/), and [MySQL](https://www.mysql.com/) installed and properly configured on your machine.
+
+Follow these steps to install and run the project:
+
+1. **Clone the repository:** Clone this repository to your machine using Git:
+    ```bash
+    git clone https://github.com/CiprianBoamba/create-REST-API
+    ```
+2. **Navigate into the project directory:**
+
+```bash
+cd your-repository-name
+```
+
+3. **Install dependencies:** Use Composer to install the project's dependencies:
+
+```bash
+composer install
+```
+
+4. **Set up your environment variables:** Copy the `.env.example` file and create your own `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+Now, open the `.env` file and configure your database information.
 
 ## Usage Instructions
 
 List any instructions on how to use your project here.
+
+1. **List All Books:** To get a list of all books, make a **`GET`** request to **`/api/books`** .
+2. **Create a New Book:** To create a new book, make a **`POST`** request to **`/api/books`** with a JSON body containing **'title'**, **'author'**, **'genres'**, and **'published_year'**.
+   Example:
+
+```
+{
+ "title": "New Book Title",
+ "author": "Book Author",
+ "genres": "Fiction, Mystery",
+ "published_year": 2022
+}
+```
+
+3. **Retrieve a Specific Book** To get a list of all books, make a **`GET`** request to **`/api/books/{id}`**, where **`{id}`** is the ID of the book you want to retrieve.
+4. **Update a Book:** To update an existing book, make a **`PUT`** request to **`/api/books/{id}`** , where **`{id}`** is the ID of the book you want to update. Include a JSON body with the fields **'title'**, **'author'**, **'genres'**, and **'published_year'** that you want to update.
+   Example:
+
+```
+{
+ "title": "Updated  Book Title",
+ "author": "Updated  Book Author",
+ "genres": "Updated Fiction, Mystery",
+ "published_year": 2023
+}
+```
+
+5. **Delete a Book** To delete a book, make a **`DELETE`** request to **`/api/books/{id}`**, where **`{id}`** is the ID of the book you want to delete.
+
+To interact with this API, you can use any HTTP client, such as [curl](https://curl.se/),[Postman](https://www.postman.com/), or any programming language that can send HTTP requests.
+
+Please note that this API does not require any authentication or authorization at the moment, and it should not be used in production without adding proper security measures.
 
 ## Contributing
 
