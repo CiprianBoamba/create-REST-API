@@ -111,32 +111,6 @@ class BookController extends Controller
     }
 
 
-/**
- * Edit the specified book.
- *
- * @param  int  $id
- * @return \Illuminate\Http\JsonResponse
- * @throws \Illuminate\Database\Eloquent\ModelNotFoundException If book not found
- */
-    
-    public function edit($id)
-    {
-       try {
-        $book = Book::findOrFail($id);
-
-        return response()->json([
-            'status' => Response::HTTP_OK,
-            'book' => $book
-        ], Response::HTTP_OK);
-        
-    } catch (ModelNotFoundException $e) {
-
-        return response()->json([
-            'status' => Response::HTTP_NOT_FOUND,
-            'message' => 'No book was found!'
-        ], Response::HTTP_NOT_FOUND);
-    }
-    }
 
 
     /**

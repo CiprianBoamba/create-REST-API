@@ -154,14 +154,6 @@ To interact with this API, you can use any HTTP client, such as [curl](https://c
 
 Please note that this API does not require any authentication or authorization at the moment, and it should not be used in production without adding proper security measures.
 
-## Contributing
-
-List any instructions for developers wanting to contribute to your project here.
-
-## License
-
-Include any license information here.
-
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
