@@ -57,7 +57,7 @@ The request should include the ID of the book in the URL.
 -   `status`: HTTP status code.
 -   `book`: The requested book.
 
-### `PUT /api/books/{id}`
+### `PUT /api/books/{id}/edit`
 
 Updates a specific book by its ID.
 
@@ -108,7 +108,7 @@ Before you start, ensure you have [PHP](https://www.php.net/), [Composer](https:
 ```
 
 3. **Retrieve a Specific Book** To get a list of all books, make a **`GET`** request to **`/api/books/{id}`**, where **`{id}`** is the ID of the book you want to retrieve.
-4. **Update a Book:** To update an existing book, make a **`PUT`** request to **`/api/books/{id}`** , where **`{id}`** is the ID of the book you want to update. Include a JSON body with the fields **'title'**, **'author'**, **'genres'**, and **'published_year'** that you want to update.
+4. **Update a Book:** To update an existing book, make a **`PUT`** request to **`/api/books/{id}/edit`** , where **`{id}`** is the ID of the book you want to update. Include a JSON body with the fields **'title'**, **'author'**, **'genres'**, and **'published_year'** that you want to update.
    Example:
 
 ```
